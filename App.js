@@ -91,37 +91,84 @@
 //   );
 // }
 //export default animal;
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
- import React from "react";
- import { View,Text,TextInput } from "react-native";  
- const See=()=>{
-  return(
-  <View>
-    <Text style={{fontSize:30,color:'orange',margin:50,textAlign:'center'}}>How are you?</Text>
-    <TextInput style={{
-      margin:20,
-      padding:10,
-      height:40,
-      color:'gray',
-      borderWidth:2
+// ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//  import React from "react";
+//  import { View,Text,TextInput } from "react-native";  
+//  const See=()=>{
+//   return(
+//   <View>
+//     <Text style={{fontSize:30,color:'orange',margin:50,textAlign:'center'}}>How are you?</Text>
+//     <TextInput style={{
+//       margin:20,
+//       padding:10,
+//       height:40,
+//       color:'gray',
+//       borderWidth:2
       
-    }}placeholder='Type Answer'></TextInput>
-  </View>
-  );
- }
-const Person=(props)=>{
-  return(
-  <Text>This Person Name is{props.name}</Text>
-  );
-}
- const House=()=>{
-  return(
-    <View><Text>Welcome Home!</Text>
-    <Person name='Bhavani' />
-    <See />
-    <See />
-    <See />
+//     }}placeholder='Type Answer'></TextInput>
+//   </View>
+//   );
+//  }
+// const Person=(props)=>{
+//   return(
+//   <Text>This Person Name is{props.name}</Text>
+//   );
+// }
+//  const House=()=>{
+//   return(
+//     <View><Text>Welcome Home!</Text>
+//     <Person name='Bhavani' />
+//     <See />
+//     <See />
+//     <See />
+//     </View>
+//   );
+//  }
+// // export default House;
+// import React from "react";
+// import { Text,Image,View } from "react-native";
+// const File=()=>{
+//   return(
+//     <View>
+//       <Image
+//       source={{uri:'https://reactnative.dev/docs/assets/p_cat1.png'}}
+//       style={{width:200,height:200}}
+//       />
+//       <Text style={{color:'darkblue'}}>NEW WORLD</Text>
+//     </View>
+//   );
+// }
+// export default File;
+
+import React ,{useState} from 'react';
+import { Text, View, Image,Button } from 'react-native';
+
+const CatApp = (props) => {
+  const [isOk,setIsOk]=useState(true);
+  return ( 
+    <View>
+      <Image
+        source={{uri: 'https://reactnative.dev/docs/assets/p_cat2.png'}}
+        style={{width: 200, height: 200}}></Image>
+        <Button 
+        onPress={()=>{
+          setIsOk(false);
+          }}
+        disabled={!isOk}
+        title={isOk? "Feed me!":"I'm Done!"}  
+          ></Button>
+      <Text 
+      style={{fontSize:"20"}} >I ate {props.food}!</Text>
     </View>
   );
- }
-export default House;
+}
+const Cafe = () => {
+  return (
+    <>
+      <CatApp food="N-Veg" />
+      <CatApp food="Veg" />
+    </>
+  );
+}
+
+export default Cafe ;
